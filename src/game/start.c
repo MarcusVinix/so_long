@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 00:34:55 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/11 09:05:02 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/11 11:16:36 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ char	**init_map(t_game *game, int argc, char **argv)
 	return (map);
 }
 
+void	init_window(t_game *game)
+{
+	printf("window line %i colum %i", game->map.line, game->map.colum);
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, game->map.colum * TILES, game->map.line * TILES, "so_long");
+}
+
 int	init_game(t_game *game, int argc, char **argv)
 {
 	t_map map;
@@ -43,5 +50,6 @@ int	init_game(t_game *game, int argc, char **argv)
 	game->map.map = init_map(game, argc, argv);
 	if (game->map.map == NULL)
 		return (-1);
+	init_window(game);
 	return (1);
 }

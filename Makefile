@@ -16,7 +16,7 @@ FILES = $(PATH_GNL)get_next_line.c $(PATH_GNL)get_next_line_utils.c \
 		$(PATH_GAME)start.c
 
 CC = clang
-CFLAGS = -I ./minilibx/ -L ./minilibx/ -lmlx -Ilmlx -lXext -lX11 ./minilibx/libmlx.a
+CFLAGS = -I ./minilibx/ -L ./minilibx/ -lmlx -Ilmlx -lXext -lX11 
 RM = rm -rf
 
 all: $(NAME)
@@ -30,4 +30,4 @@ fclean: clean
 	$(RM) $(NAME)
 
 test:	
-	$(CC) -fsanitize=leak $(PATH_SRC)so_long.c $(FILES) -o so_long
+	$(CC) -fsanitize=leak $(CFLAGS) $(PATH_SRC)so_long.c $(FILES) ./minilibx/libmlx.a -o so_long

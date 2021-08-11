@@ -2,6 +2,14 @@
 
 # define SO_LONG_H
 
+# define TILES 64
+# define PATH_W "./sprite_file/wood.xpm"
+# define PATH_E "./sprite_file/colorstone.xpm"
+# define PATH_EX "./sprite_file/barrel.xpm"
+# define PATH_P "./sprite_file/knight2.xpm"
+# define PATH_I "./sprite_file/cake.xpm"
+
+# include "mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -36,11 +44,33 @@ typedef struct	s_position
 	int	y;
 } 				t_pos;
 
+typedef struct	s_data
+{
+	void	*img;
+	char	*pixel;
+	t_pos	pos;
+	t_pos	size;
+	int		bpp;
+	int		line_size;
+	int		endian;
+}				t_data;
+
+typedef struct	s_img
+{
+	t_data	wall;
+	t_data	emp;
+	t_data	exit;
+	t_data	player;
+	t_data	item;
+}				t_img;
+
 typedef struct	s_game
 {
 	void	*mlx;
 	void	*win;
 	t_map	map;
+	t_img	img;
+
 }				t_game;
 
 
