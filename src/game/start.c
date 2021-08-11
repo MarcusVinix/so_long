@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 00:34:55 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/11 11:16:36 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/11 15:59:27 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ int	init_game(t_game *game, int argc, char **argv)
 	if (game->map.map == NULL)
 		return (-1);
 	init_window(game);
+	game->img = init_image(game->mlx);
+	print_map(game);
 	return (1);
 }

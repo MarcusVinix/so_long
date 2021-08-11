@@ -91,6 +91,17 @@ int		check(char c, t_map *map, int col, int line);
 int		valid_map(int argc, char *map_file);
 void	free_map(char **map_str, t_map *map);
 
+//print map
+t_img	init_image(void *mlx);
+void print_map(t_game *game);
+
+//init sprites
+void	init_wall(t_img *img, void *mlx);
+void	init_empty(t_img *img, void *mlx);
+void	init_exit(t_img *img, void *mlx);
+void	init_item(t_img *img, void *mlx);
+void	init_player(t_img *img, void *mlx);
+
 //erros
 int		errors(char *message);
 void	*null_erro(char *message);

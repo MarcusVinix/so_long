@@ -1,3 +1,3 @@
 git add .
-git commit -m "colocando os sprites no mapa"
+git commit -m "fix the norma of lines and colum"
 git push origin master 
