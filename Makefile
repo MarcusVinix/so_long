@@ -9,7 +9,7 @@ PATH_ERRORS = $(PATH_SRC)errors/
 NAME = so_long
 
 FILES = $(PATH_GNL)get_next_line.c $(PATH_GNL)get_next_line_utils.c \
-		$(PATH_MAP)map.c \
+		$(PATH_MAP)map.c $(PATH_MAP)check.c $(PATH_MAP)valid_maps.c \
 		$(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_memset.c $(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_strlen.c \
 		$(PATH_ERRORS)errors.c
 
