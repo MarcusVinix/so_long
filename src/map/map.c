@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:56:21 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/10 23:41:15 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/11 08:42:42 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static char	**alloc_map(char *path, t_map *o_map)
 	char	**map_str;
 
 	o_map->line = lines(path, o_map);
+	printf("valid is %i\n", o_map->valid);
+
 	if (o_map->valid <= 0)
 		return (null_erro("invalid map"));
 	if (o_map->line <= 0)
@@ -99,8 +101,11 @@ static void	check_last_line(char *line, t_map *map)
 			}
 	}
 	cpe = valid_cpe(map);
+	
+
 	if (cpe == 0)
 		map->valid = 0;
+	printf("valid is %i c %i p  %i e %i\n", map->valid, map->check.collect, map->check.player, map->check.exit);
 }
 
 /* fill the array with the map 2d */
@@ -118,6 +123,7 @@ char	**read_map(char *path, t_map *o_map)
 	while (get_next_line(fd, &map_str[i++]));
 	map_str[i] = NULL;
 	check_last_line(map_str[i - 1], o_map);
+	printf("valid is %i\n", o_map->valid);
 	if (o_map->valid == 0)
 	{
 		free_map(map_str, o_map);

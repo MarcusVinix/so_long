@@ -1,3 +1,3 @@
 git add .
-git commit -m "make updates"
+git commit -m "startando o mapa"
 git push origin master 

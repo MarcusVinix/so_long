@@ -36,6 +36,13 @@ typedef struct	s_position
 	int	y;
 } 				t_pos;
 
+typedef struct	s_game
+{
+	void	*mlx;
+	void	*win;
+	t_map	map;
+}				t_game;
+
 
 
 //utils
@@ -58,5 +65,8 @@ void	free_map(char **map_str, t_map *map);
 int		errors(char *message);
 void	*null_erro(char *message);
 void	warning(char *message);
+
+//game
+int	init_game(t_game *game, int argc, char **argv);
 
 #endif
