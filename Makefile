@@ -11,7 +11,7 @@ NAME = so_long
 
 FILES = $(PATH_GNL)get_next_line.c $(PATH_GNL)get_next_line_utils.c \
 		$(PATH_MAP)map.c $(PATH_MAP)check.c $(PATH_MAP)valid_maps.c $(PATH_MAP)render_map.c $(PATH_MAP)init_sprites.c\
-		$(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_memset.c $(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_strlen.c \
+		$(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_memset.c $(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_strlen.c $(PATH_UTILS)check_extension.c\
 		$(PATH_ERRORS)errors.c \
 		$(PATH_GAME)start.c $(PATH_GAME)action.c
 

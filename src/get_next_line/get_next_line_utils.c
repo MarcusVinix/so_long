@@ -40,7 +40,7 @@ char	*ft_strdup(const char *s)
 	size_t	i;
 
 	len = ft_strlen(s);
-	new_str = (char *)malloc(len + 1);
+	new_str = malloc(len + 1);
 	if (new_str == NULL)
 		return (NULL);
 	i = 0;

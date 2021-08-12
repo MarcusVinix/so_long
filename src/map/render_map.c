@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:40:43 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/11 16:09:38 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 17:25:11 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,53 @@ t_img	init_image(void *mlx)
 	return (img);
 }
 
+void	print_player_down(t_game *game, int line, int col)
+{
+	game->img.player.down.pos.x = col * TILES;
+	game->img.player.down.pos.y = line * TILES;
+	mlx_put_image_to_window(game->mlx, game->win, 
+	game->img.player.down.img, game->img.player.down.pos.x, 
+	game->img.player.down.pos.y);
+}
+
+void	print_player_top(t_game *game, int line, int col)
+{
+	game->img.player.top.pos.x = col * TILES;
+	game->img.player.top.pos.y = line * TILES;
+	mlx_put_image_to_window(game->mlx, game->win, 
+	game->img.player.top.img, game->img.player.top.pos.x, 
+	game->img.player.top.pos.y);
+}
+
+void	print_player_left(t_game *game, int line, int col)
+{
+	game->img.player.left.pos.x = col * TILES;
+	game->img.player.left.pos.y = line * TILES;
+	mlx_put_image_to_window(game->mlx, game->win, 
+	game->img.player.left.img, game->img.player.left.pos.x, 
+	game->img.player.left.pos.y);
+}
+
+void	print_player_right(t_game *game, int line, int col)
+{
+	game->img.player.right.pos.x = col * TILES;
+	game->img.player.right.pos.y = line * TILES;
+	mlx_put_image_to_window(game->mlx, game->win, 
+	game->img.player.right.img, game->img.player.right.pos.x, 
+	game->img.player.right.pos.y);
+}
+
+void	print_player(t_game *game, int line, int col)
+{
+	if (game->side == DOWN)
+		print_player_down(game, line, col);
+	else if (game->side == TOP)
+		print_player_top(game, line, col);
+	else if (game->side == RIGHT)
+		print_player_right(game, line, col);
+	else
+		print_player_left(game, line, col);
+}
 static void	print_sprites_cex(t_game *game,int line, int col)
 {
 	if (game->map.map[line][col] == 'E')
@@ -60,10 +107,8 @@ static void	print_sprites_wpe(t_game *game,int line, int col)
 	}
 	if (game->map.map[line][col] == 'P')
 	{
-		game->img.player.pos.x = col * TILES;
-		game->img.player.pos.y = line * TILES;
-		mlx_put_image_to_window(game->mlx, game->win, 
-		game->img.player.img, game->img.player.pos.x, game->img.player.pos.y);
+		print_player(game, line, col);
+		
 	}
 }
 

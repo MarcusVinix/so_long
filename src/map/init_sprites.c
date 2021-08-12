@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:54:49 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/11 15:55:21 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 16:55:42 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,23 @@ void	init_exit(t_img *img, void *mlx)
 
 void	init_player(t_img *img, void *mlx)
 {
-	img->player.img = mlx_xpm_file_to_image(mlx, PATH_P, &img->player.size.x, 
-	&img->player.size.y);
-	img->player.pixel = mlx_get_data_addr(img->player.img, &img->player.bpp, 
-	&img->player.line_size, &img->player.endian);
+	img->player.down.img = mlx_xpm_file_to_image(mlx, PATH_PD, &img->player.down.size.x, 
+	&img->player.down.size.y);
+	img->player.down.pixel = mlx_get_data_addr(img->player.down.img, &img->player.down.bpp, 
+	&img->player.down.line_size, &img->player.down.endian);
+
+	img->player.top.img = mlx_xpm_file_to_image(mlx, PATH_PT, &img->player.top.size.x, 
+	&img->player.top.size.y);
+	img->player.top.pixel = mlx_get_data_addr(img->player.top.img, &img->player.top.bpp, 
+	&img->player.top.line_size, &img->player.top.endian);
+
+	img->player.left.img = mlx_xpm_file_to_image(mlx, PATH_PL, &img->player.left.size.x, 
+	&img->player.left.size.y);
+	img->player.left.pixel = mlx_get_data_addr(img->player.left.img, &img->player.left.bpp, 
+	&img->player.left.line_size, &img->player.left.endian);
+
+	img->player.right.img = mlx_xpm_file_to_image(mlx, PATH_PR, &img->player.right.size.x, 
+	&img->player.right.size.y);
+	img->player.right.pixel = mlx_get_data_addr(img->player.right.img, &img->player.right.bpp, 
+	&img->player.right.line_size, &img->player.right.endian);
 }

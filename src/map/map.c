@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:56:21 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 00:33:45 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 19:38:33 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ char	**read_map(char *path, t_map *o_map)
 		free_map(map_str, o_map);
 		return (null_erro("invalid map"));
 	}
+	backup_map(o_map, map_str);
 	close(fd);
 	return (map_str);
 }

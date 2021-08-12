@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:46:42 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 00:49:11 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 19:03:29 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	check_c(char c, t_map *map, int col, int line)
 		map->check.player += 1;
 		map->player.x = col;
 		map->player.y = line - 1;
+		map->player_bup.x = col;
+		map->player_bup.y = line -1;
 		//printf("PLAYER X: %i Y: %i\n", col, line);
 	}
 	if (c == 'E')
@@ -44,7 +46,7 @@ int	check_c(char c, t_map *map, int col, int line)
 	if (c == 'P' || c == '1' || c == 'C' || c == 'E' || c == '0')
 		return (1);
 	else
-		return (errors("wrong character in the map"));
+		return (0);
 }
 
 int valid_cpe(t_map *map)

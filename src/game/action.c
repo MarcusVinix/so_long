@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 16:55:09 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 00:33:17 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 19:46:16 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,23 @@ x = coluna
 y = linha 
 */
 
-void	close_win(t_game *game)
+void	reset(t_game *game)
+{
+	recovery(&game->map);
+	game->map.player.x = game->map.player_bup.x;
+	game->map.player.y = game->map.player_bup.y;
+	game->end_game = 0;
+	game->steps = 0;
+	game->side = DOWN;
+}
+
+int	close_win(t_game *game)
 {
 	free_map(game->map.map, &game->map);
 	exit(0);
 }
 
-int	verify_move(t_game *game, int line, int col)
+int	verify_move(t_game *game, int line, int col, int key)
 {
 
 //	printf("what is the house %c\n", game->map.map[line][col]);
@@ -38,6 +48,8 @@ int	verify_move(t_game *game, int line, int col)
 	if (game->map.map[line][col] == 'E')
 		return (-1);
 	if (game->end_game)
+		return (-1);
+	if (key != TOP && key != DOWN && key != LEFT && key != RIGHT )
 		return (-1);
 	else
 		return (1);
@@ -51,9 +63,22 @@ void	kill_player(t_game *game)
 	y = game->map.player.y;
 	x = game->map.player.x;
 	game->map.map[y][x] = '0';
+	print_map(game);
 }
 
-void	move_player(t_game *game, int line, int col)
+void	check_side(t_game *game, int key)
+{
+	if (key == DOWN)
+		game->side = DOWN;
+	else if (key == TOP)
+		game->side = TOP;
+	else if (key == RIGHT)
+		game->side = RIGHT;
+	else if (key == LEFT)
+		game->side = LEFT;
+}
+
+void	move_player(t_game *game, int line, int col, int key)
 {
 	int y;
 	int x;
@@ -62,10 +87,11 @@ void	move_player(t_game *game, int line, int col)
 	//printf("testeee line  %i colum %i\n", line, col);
 	y = game->map.player.y;
 	x = game->map.player.x;
-	valid = verify_move(game, line, col);
+	valid = verify_move(game, line, col, key);
 	if (game->end_game)
 		kill_player(game);
 	//printf("\ny : %i x : %i   line %i col %i move : %i how many colectables %i\n", y, x, line, col, verify_move(game, line, col), game->map.check.collect);
+	check_side(game, key);
 	if (valid > 0)
 	{
 		if (game->map.map[line][col] == 'C')
@@ -75,6 +101,7 @@ void	move_player(t_game *game, int line, int col)
 		game->map.player.y = line;
 		game->map.player.x = col;
 		game->steps++;
+		printf("CURRENT STEP: %i\n", game->steps);
 	}
 }
 
@@ -87,20 +114,42 @@ int	action(int keycode, t_game *game)
 	col = game->map.player.x;
 	if (keycode == 65307)
 		close_win(game);
-	if (keycode == 65362)
+	if (keycode == 114)
+		reset(game);
+	if (keycode == TOP)
 		line--;
-	if (keycode == 65364)
+	if (keycode == DOWN)
 		line++;
-	if (keycode == 65361)
+	if (keycode == LEFT)
 		col--;
-	if (keycode == 65363)
+	if (keycode == RIGHT)
 		col++;
 	if (!game->end_game)
 	{
-		mlx_clear_window(game->mlx, game->win);
-		move_player(game, line, col);
-		print_map(game);
-		printf("CURRENT STEP: %i\n", game->steps);
+	//	mlx_clear_window(game->mlx, game->win);
+		move_player(game, line, col, keycode);
+		//print_map(game);
+
 	}
+
 	return (1);
+}
+
+int	update(t_game *game)
+{
+	if (game->reset < 30)
+		game->reset += 0.1;
+	else if (game->end_game < 1)
+	{
+		//printf("LIMPEI");
+		mlx_clear_window(game->mlx, game->win);
+		game->reset = 0;
+	}
+	//printf("CLEAR\n");
+	if (game->end_game < 1)
+	{
+		//printf("reset is %.2f\n", game->reset);
+		print_map(game);
+	}
+	return (0);
 }

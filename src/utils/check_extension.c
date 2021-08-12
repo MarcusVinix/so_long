@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   check_extension.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 00:15:49 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 17:07:49 by mavinici         ###   ########.fr       */
+/*   Created: 2021/08/12 09:50:02 by mavinici          #+#    #+#             */
+/*   Updated: 2021/08/12 09:57:23 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-
-int main(int argc, char **argv)
+int	check_extension(char *str, char *extension)
 {
-	t_game game;
+	int	len_str;
+	int	len_ext;
+	int i;
 
-	game.side = 0;
-	game.reset = 0;
-	game.end_game = 0;
-	game.steps = 0;
-	game.init_game = 0;
-	if (init_game(&game, argc, argv) < 0)
-		return (0);
-	mlx_hook(game.win, 17, 0, close_win, (void *)&game);
-	mlx_hook(game.win, 2, 1L<<0, action, (void *)&game);
-	mlx_loop_hook(game.mlx, update, &game);
-	mlx_loop(game.mlx);
-	return (0);
+	len_str = ft_strlen(str);
+	len_ext = ft_strlen(extension);
+	i = 0;
+	while (len_ext > 0)
+	{
+		if (extension[--len_ext] == str[--len_str])
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }
