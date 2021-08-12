@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 23:38:37 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/11 08:47:05 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:17:53 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ int	valid_map(int argc, char *map_file)
 		warning("Just the first argv will be used");
 	//todo 
 	//some function to verify the extension of the map
+	int len = ft_strlen(map_file);
 	return (0);
 }
 
 void	free_map(char **map_str, t_map *map)
 {
 	int	i;
-	printf("ENTREI FREE");
+	//printf("ENTREI FREE");
 	i = 0;
 	while (i <= map->line)
 			free(map_str[i++]);

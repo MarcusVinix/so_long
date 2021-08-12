@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:56:21 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/11 08:42:42 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 00:33:45 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	counts(int fd, int count_lines, int count_col, t_map *o_map)
 	while (true)
 	{
 		size = read(fd, &buffer, 1);
-		printf("size: %i buffer: %c\n", size, buffer);
+		//printf("size: %i buffer: %c\n", size, buffer);
 		if (size < 0)
 			return (errors("failed int the read of file"));
 		verify(check(buffer, o_map, count_col, count_lines), o_map);	
@@ -32,7 +32,7 @@ int	counts(int fd, int count_lines, int count_col, t_map *o_map)
 			count_col++;
 		if (o_map->end_col == 0 && buffer == '\n')
 			o_map->end_col = count_col - 1;
-		printf("TMP: %i COLUM: %i\n", o_map->end_col, count_col);
+		//printf("TMP: %i COLUM: %i\n", o_map->end_col, count_col);
 		if (o_map->end_col != count_col - 1 && (buffer == '\n' || size == 0))
 			return (errors("map has less coluns in some lines"));
 		else if (buffer == '\n')
@@ -52,14 +52,14 @@ int	lines(char *map, t_map *o_map)
 	int		count_col;
 	
 	fd = open(map, O_RDONLY);
-	printf("FD: %i\n", fd);
+	//printf("FD: %i\n", fd);
 	if (fd < 0)
 		return (errors("erro for open the file"));
 	count_lines = 1;
 	count_col = 0;
-	printf("FD: %i  %i\n", fd, count_lines);
+	//printf("FD: %i  %i\n", fd, count_lines);
 	count_lines = counts(fd, count_lines, count_col, o_map);
-	printf("COLUM: %i LIne: %i\n", o_map->colum, count_lines);
+	//printf("COLUM: %i LIne: %i\n", o_map->colum, count_lines);
 	if (count_lines <= 0)
 		return (errors("has some error in the map"));
 	close(fd);
@@ -72,7 +72,7 @@ static char	**alloc_map(char *path, t_map *o_map)
 	char	**map_str;
 
 	o_map->line = lines(path, o_map);
-	printf("valid is %i\n", o_map->valid);
+	//printf("valid is %i\n", o_map->valid);
 
 	if (o_map->valid <= 0)
 		return (null_erro("invalid map"));
@@ -105,7 +105,7 @@ static void	check_last_line(char *line, t_map *map)
 
 	if (cpe == 0)
 		map->valid = 0;
-	printf("valid is %i c %i p  %i e %i\n", map->valid, map->check.collect, map->check.player, map->check.exit);
+//	printf("valid is %i c %i p  %i e %i\n", map->valid, map->check.collect, map->check.player, map->check.exit);
 }
 
 /* fill the array with the map 2d */
@@ -123,7 +123,7 @@ char	**read_map(char *path, t_map *o_map)
 	while (get_next_line(fd, &map_str[i++]));
 	map_str[i] = NULL;
 	check_last_line(map_str[i - 1], o_map);
-	printf("valid is %i\n", o_map->valid);
+	//printf("valid is %i\n", o_map->valid);
 	if (o_map->valid == 0)
 	{
 		free_map(map_str, o_map);

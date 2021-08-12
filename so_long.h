@@ -72,10 +72,9 @@ typedef struct	s_game
 	void	*win;
 	t_map	map;
 	t_img	img;
-
+	int		end_game;
+	int		steps;
 }				t_game;
-
-
 
 //utils
 void	*ft_calloc(size_t nmemb, size_t size);

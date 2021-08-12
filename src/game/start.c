@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 00:34:55 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/11 15:59:27 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 00:36:11 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**init_map(t_game *game, int argc, char **argv)
 
 void	init_window(t_game *game)
 {
-	printf("window line %i colum %i", game->map.line, game->map.colum);
+//	printf("window line %i colum %i", game->map.line, game->map.colum);
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->map.colum * TILES, game->map.line * TILES, "so_long");
 }
@@ -53,5 +53,6 @@ int	init_game(t_game *game, int argc, char **argv)
 	init_window(game);
 	game->img = init_image(game->mlx);
 	print_map(game);
+	printf("CURRENT STEP: %i\n", game->steps);
 	return (1);
 }
