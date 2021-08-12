@@ -1,3 +1,3 @@
 git add .
-git commit -m "fix the norma of lines and colum"
+git commit -m "make move"
 git push origin master 

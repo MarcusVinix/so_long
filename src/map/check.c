@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:46:42 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/10 23:38:50 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/11 20:56:32 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,15 @@ int	check_wall(char c)
 		return (0);
 }
 
-int	check_c(char c, t_map *map)
+int	check_c(char c, t_map *map, int col, int line)
 {
 	if (c == 'P')
+	{
 		map->check.player += 1;
+		map->player.x = col;
+		map->player.y = line - 1;
+		printf("PLAYER X: %i Y: %i\n", col, line);
+	}
 	if (c == 'E')
 		map->check.exit += 1;
 	if (c == 'C')
@@ -40,7 +45,6 @@ int	check_c(char c, t_map *map)
 		return (1);
 	else
 		return (0);
-
 }
 
 int valid_cpe(t_map *map)
@@ -58,7 +62,7 @@ int	check(char c, t_map *map, int col, int line)
 {
 	int	valid_c;
 
-	valid_c = check_c(c, map);
+	valid_c = check_c(c, map, col, line);
 	if (valid_c == 0 && c != '\n')
 		return (0);
 	if ((line == 1 || col == 0) && c != '\n')

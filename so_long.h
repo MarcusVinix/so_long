@@ -21,6 +21,12 @@
 
 # define BUFFER_SIZE 1
 
+typedef struct	s_position
+{
+	int	x;
+	int	y;
+} 				t_pos;
+
 typedef struct	s_map_check
 {
 	int	player;
@@ -30,6 +36,7 @@ typedef struct	s_map_check
 
 typedef struct	s_map
 {
+	t_pos	player;
 	int		valid;
 	int		end_col;
 	int		colum;
@@ -38,11 +45,6 @@ typedef struct	s_map
 	char	**map;
 } 				t_map;
 
-typedef struct	s_position
-{
-	int	x;
-	int	y;
-} 				t_pos;
 
 typedef struct	s_data
 {
@@ -85,7 +87,7 @@ size_t	ft_strlen(const char *s);
 char	**read_map(char *path, t_map *o_map);
 void	verify(int valid, t_map *map);
 int		check_wall(char c);
-int		check_c(char c, t_map *map);
+int		check_c(char c, t_map *map, int col, int line);
 int 	valid_cpe(t_map *map);
 int		check(char c, t_map *map, int col, int line);
 int		valid_map(int argc, char *map_file);
@@ -93,7 +95,7 @@ void	free_map(char **map_str, t_map *map);
 
 //print map
 t_img	init_image(void *mlx);
-void print_map(t_game *game);
+void 	print_map(t_game *game);
 
 //init sprites
 void	init_wall(t_img *img, void *mlx);
@@ -108,6 +110,7 @@ void	*null_erro(char *message);
 void	warning(char *message);
 
 //game
-int	init_game(t_game *game, int argc, char **argv);
+int		init_game(t_game *game, int argc, char **argv);
+int		action(int key, t_game *game);
 
 #endif
