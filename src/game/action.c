@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 16:55:09 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/11 21:25:03 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/11 21:35:57 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	move_player(t_game *game, int line, int col)
 		game->map.player.y = line;
 		game->map.player.x = col;
 	}
+	if (game->map.map[line][col] == 'C')
+		game->map.check.collect++;
 }
 
 int	action(int keycode, t_game *game)
