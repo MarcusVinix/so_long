@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 23:38:37 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 19:45:51 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 20:09:41 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ void	*recovery(t_map *map)
 	int		line;
 
 	//printf("ENTREI FREE");
-	i = 0;
-	while (i <= map->line)
-			free(map->map[i++]);
-	free(map->map);
-	line = map->line;
-	map->map  = malloc(sizeof(char *) * line + 1);
-	if (!map->map)
-		return (NULL);
+	//i = 0;
+	//while (i <= map->line)
+	//		free(map->map[i++]);
+	//free(map->map);
+	//line = map->line;
+	//map->map  = malloc(sizeof(char *) * line + 1);
+	//if (!map->map)
+	//	return (NULL);
 	i = 0;
 	while (i < line)
 	{
