@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 16:55:09 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 10:44:47 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:05:06 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	kill_player(t_game *game)
 	y = game->map.player.y;
 	x = game->map.player.x;
 	game->map.map[y][x] = '0';
+	game->side = DOWN;
 	print_map(game);
 }
 
@@ -65,7 +66,7 @@ int	action(int keycode, t_game *game)
 
 int	update(t_game *game)
 {
-	if (game->reset < 35)
+	if (game->reset < 32)
 		game->reset += 0.1;
 	else if (game->end_game < 1)
 	{

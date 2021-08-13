@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/13 10:54:13 by mavinici          #+#    #+#             */
+/*   Updated: 2021/08/13 13:43:57 by mavinici         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 
 # define SO_LONG_H
@@ -10,7 +22,7 @@
 # define PATH_PT "./sprite_file/player_top.xpm"
 # define PATH_PR "./sprite_file/player_right.xpm"
 # define PATH_PL "./sprite_file/player_left.xpm"
-# define PATH_I "./sprite_file/teste.xpm"
+# define PATH_I "./sprite_file/item.xpm"
 # define PATH_V "./sprite_file/venom.xpm"
 # define TOP 119
 # define DOWN 115
@@ -26,37 +38,36 @@
 # include <limits.h>
 # include "src/gnl/get_next_line.h"
 
-
 # define BUFFER_SIZE 1
 
-typedef struct	s_position
+typedef struct s_position
 {
 	int	x;
 	int	y;
-} 				t_pos;
+}				t_pos;
 
-typedef struct	s_map_check
+typedef struct s_map_check
 {
 	int	player;
 	int	exit;
 	int	collect;
-} 				t_map_check;
+}				t_map_check;
 
-typedef struct	s_map
+typedef struct s_map
 {
-	t_pos	player;
-	t_pos	player_bup;
-	int		valid;
-	int		end_col;
-	int		colum;
-	int		line;
-	t_map_check check;
-	int		item_bup;
-	char	**map;
-	char	**backup_map;
-} 				t_map;
+	t_pos		player;
+	t_pos		player_bup;
+	int			valid;
+	int			end_col;
+	int			colum;
+	int			line;
+	t_map_check	check;
+	int			item_bup;
+	char		**map;
+	char		**backup_map;
+}				t_map;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*img;
 	char	*pixel;
@@ -67,17 +78,15 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
-
 typedef struct s_side
 {
 	t_data	down;
 	t_data	top;
 	t_data	left;
 	t_data	right;
-} 				t_side;
+}				t_side;
 
-
-typedef struct	s_img
+typedef struct s_img
 {
 	t_data	wall;
 	t_data	emp;
@@ -87,7 +96,7 @@ typedef struct	s_img
 	t_data	enemy;
 }				t_img;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
@@ -112,7 +121,7 @@ char	**read_map(char *path, t_map *o_map);
 void	verify(int valid, t_map *map);
 int		check_wall(char c);
 int		check_c(char c, t_map *map, int col, int line);
-int 	valid_cpe(t_map *map);
+int		valid_cpe(t_map *map);
 int		check(char c, t_map *map, int col, int line);
 int		valid_map(int argc, char *map_file);
 void	free_map(char **map_str, t_map *map);
@@ -122,7 +131,7 @@ int		recovery(t_map *map);
 
 //print map
 t_img	init_image(void *mlx);
-void 	print_map(t_game *game);
+void	print_map(t_game *game);
 void	*backup(t_map *map, char **map_str);
 
 //init sprites

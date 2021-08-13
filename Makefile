@@ -29,8 +29,10 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C $(PATH_MLX)
-	$(CC) -fsanitize=leak $(CFLAGS) $(MLXFLAGS) $(PATH_SRC)so_long.c $(OBJS) $(MLX) -o so_long
+	@echo objects done!!
+	@make -C $(PATH_MLX)
+	@$(CC) -fsanitize=leak $(CFLAGS) $(MLXFLAGS) $(PATH_SRC)so_long.c $(OBJS) $(MLX) -o so_long
+	@echo program done!
 
 $(PATH_OBJS)%.o:	$(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
@@ -39,7 +41,9 @@ $(PATH_OBJS)%.o:	$(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)utils
 	@mkdir -p $(PATH_OBJS)errors
 	@mkdir -p $(PATH_OBJS)game
-	$(CC) -I. -c $< -o $@
+	@$(CC) -I. -c $< -o $@
+
+bonus: all
 
 clean:
 	$(RM) $(PATH_OBJS)
@@ -56,3 +60,6 @@ re: fclean all
 
 test:	
 	$(CC) -fsanitize=leak $(MLXFLAGS) $(CFLAGS) $(PATH_SRC)so_long.c $(FILES) ./minilibx/libmlx.a -o so_long
+
+norminha:
+	@norminette so_long.h ./src

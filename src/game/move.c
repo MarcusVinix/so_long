@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 10:43:47 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 10:45:01 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:08:38 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	move_player(t_game *game, int line, int col, int key)
 	y = game->map.player.y;
 	x = game->map.player.x;
 	valid = verify_move(game, line, col, key);
+	check_side(game, key);
 	if (game->end_game)
 		kill_player(game);
-	check_side(game, key);
 	if (valid > 0)
 	{
 		if (game->map.map[line][col] == 'C')
@@ -60,6 +60,7 @@ int	verify_move(t_game *game, int line, int col, int key)
 		return (-1);
 	if (game->map.map[line][col] == 'V')
 	{
+		game->side = DOWN;
 		reset(game);
 		return (-1);
 	}
