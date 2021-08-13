@@ -66,4 +66,4 @@ norminha:
 git:
 	git add .
 	git commit -m "fixing some bugs"
-	git push intra master 
+	git push origin master 
