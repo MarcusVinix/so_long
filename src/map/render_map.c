@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:40:43 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 09:29:55 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 09:35:51 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,19 +100,24 @@ static void	print_sprites_cex(t_game *game, int line, int col)
 
 static void	print_sprites_wpe(t_game *game, int line, int col)
 {
+	int	x;
+	int	y;
+
+	x = col * TILES;
+	y =	line * TILES;
 	if (game->map.map[line][col] == '1')
 	{
-		game->img.wall.pos.x = col * TILES;
-		game->img.wall.pos.y = line * TILES;
+		//game->img.wall.pos.x = col * TILES;
+		//game->img.wall.pos.y = line * TILES;
 		mlx_put_image_to_window(game->mlx, game->win,
-			game->img.wall.img, game->img.wall.pos.x, game->img.wall.pos.y);
+			game->img.wall.img, x, y);
 	}
 	if (game->map.map[line][col] == '0')
 	{
-		game->img.emp.pos.x = col * TILES;
-		game->img.emp.pos.y = line * TILES;
+		//game->img.emp.pos.x = col * TILES;
+		//game->img.emp.pos.y = line * TILES;
 		mlx_put_image_to_window(game->mlx, game->win,
-			game->img.emp.img, game->img.emp.pos.x, game->img.emp.pos.y);
+			game->img.emp.img, x, y);
 	}
 	if (game->map.map[line][col] == 'P')
 	{
