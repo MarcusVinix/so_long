@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 09:50:02 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 09:57:23 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:10:10 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_extension(char *str, char *extension)
 {
 	int	len_str;
 	int	len_ext;
-	int i;
+	int	i;
 
 	len_str = ft_strlen(str);
 	len_ext = ft_strlen(extension);
