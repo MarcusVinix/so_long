@@ -65,5 +65,5 @@ norminha:
 
 git:
 	git add .
-	git commit -m "change the sprites pixels"
+	git commit -m "fixing some bugs"
 	git push intra master 
