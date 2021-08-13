@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:40:43 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 17:14:10 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:57:36 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_img	init_image(void *mlx)
 	return (img);
 }
 
-void	print_player(t_game *game, int line, int col, t_pos pos)
+void	print_player(t_game *game, t_pos pos)
 {
 	if (game->side == DOWN)
 		mlx_put_image_to_window(game->mlx, game->win,
@@ -86,7 +86,7 @@ static void	print_sprites_wpe(t_game *game, int line, int col)
 	}
 	if (game->map.map[line][col] == 'P')
 	{
-		print_player(game, line, col, pos);
+		print_player(game, pos);
 	}
 }
 

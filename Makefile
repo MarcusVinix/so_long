@@ -30,7 +30,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo objects done!!
 	@make -C $(PATH_MLX)
-	@$(CC) -fsanitize=leak $(CFLAGS) $(MLXFLAGS) $(PATH_SRC)so_long.c $(OBJS) $(MLX) -o so_long
+	@$(CC) $(CFLAGS) $(MLXFLAGS) $(PATH_SRC)so_long.c $(OBJS) $(MLX) -o so_long
 	@echo program done!
 
 $(PATH_OBJS)%.o:	$(PATH_SRC)%.c
@@ -40,7 +40,7 @@ $(PATH_OBJS)%.o:	$(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)utils
 	@mkdir -p $(PATH_OBJS)errors
 	@mkdir -p $(PATH_OBJS)game
-	@$(CC) -I. -c $< -o $@
+	$(CC) $(CFLAGS) -I. -c $< -o $@
 
 bonus: all
 
@@ -62,3 +62,8 @@ test:
 
 norminha:
 	@norminette so_long.h ./src
+
+git:
+	git add .
+	git commit -m "change the sprites pixels"
+	git push origin master 
