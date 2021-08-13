@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:40:43 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 17:25:11 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 01:09:01 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_img	init_image(void *mlx)
 	init_exit(&img, mlx);
 	init_item(&img, mlx);
 	init_player(&img, mlx);
+	init_enemy(&img, mlx);
 	return (img);
 }
 
@@ -87,6 +88,13 @@ static void	print_sprites_cex(t_game *game,int line, int col)
 		mlx_put_image_to_window(game->mlx, game->win, 
 		game->img.item.img, game->img.item.pos.x, game->img.item.pos.y);
 	}
+	if (game->map.map[line][col] == 'V')
+	{
+		game->img.enemy.pos.x = col * TILES;
+		game->img.enemy.pos.y = line * TILES;
+		mlx_put_image_to_window(game->mlx, game->win, 
+		game->img.enemy.img, game->img.enemy.pos.x, game->img.enemy.pos.y);
+	}
 }
 
 static void	print_sprites_wpe(t_game *game,int line, int col)
@@ -108,14 +116,14 @@ static void	print_sprites_wpe(t_game *game,int line, int col)
 	if (game->map.map[line][col] == 'P')
 	{
 		print_player(game, line, col);
-		
 	}
 }
 
 void print_map(t_game *game)
 {
-	int	line;
-	int	col;
+	int		line;
+	int		col;
+	char	*str;
 
 	line = 0;
 	while (line < game->map.line)
@@ -123,13 +131,14 @@ void print_map(t_game *game)
 		col = 0;
 		while (col < game->map.colum)
 		{
-			if (game->map.map[line][col] == 'C')
-				print_sprites_cex(game, line, col);
-			if (game->map.map[line][col] == 'E')
-				print_sprites_cex(game, line, col);
+			print_sprites_cex(game, line, col);
 			print_sprites_wpe(game, line, col);
 			col++;
 		}
 		line++;
 	}
+	str = ft_itoa(game->steps);
+	mlx_string_put(game->mlx, game->win, 25, 25, 0xFF0000, "CURRENT STEP:");
+	mlx_string_put(game->mlx, game->win, 125, 25, 0xFF0000, str);
+	free(str);
 }

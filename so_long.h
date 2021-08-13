@@ -11,19 +11,20 @@
 # define PATH_PR "./sprite_file/player_right.xpm"
 # define PATH_PL "./sprite_file/player_left.xpm"
 # define PATH_I "./sprite_file/teste.xpm"
+# define PATH_V "./sprite_file/venom.xpm"
 # define TOP 119
 # define DOWN 115
 # define LEFT 97
 # define RIGHT 100
 
-# include "mlx.h"
+# include "./minilibx/mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <limits.h>
-# include "src/get_next_line/get_next_line.h"
+# include "src/gnl/get_next_line.h"
 
 
 # define BUFFER_SIZE 1
@@ -83,6 +84,7 @@ typedef struct	s_img
 	t_data	exit;
 	t_side	player;
 	t_data	item;
+	t_data	enemy;
 }				t_img;
 
 typedef struct	s_game
@@ -103,6 +105,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *s);
+char	*ft_itoa(int n);
 
 //map
 char	**read_map(char *path, t_map *o_map);
@@ -114,8 +117,8 @@ int		check(char c, t_map *map, int col, int line);
 int		valid_map(int argc, char *map_file);
 void	free_map(char **map_str, t_map *map);
 int		check_extension(char *str, char *extension);
-void	*backup_map(t_map *map, char **map_str);
-void	*recovery(t_map *map);
+int		backup_map(t_map *map, char **map_str);
+int		recovery(t_map *map);
 
 //print map
 t_img	init_image(void *mlx);
@@ -128,6 +131,7 @@ void	init_empty(t_img *img, void *mlx);
 void	init_exit(t_img *img, void *mlx);
 void	init_item(t_img *img, void *mlx);
 void	init_player(t_img *img, void *mlx);
+void	init_enemy(t_img *img, void *mlx);
 
 //erros
 int		errors(char *message);

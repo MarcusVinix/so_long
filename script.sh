@@ -1,3 +1,3 @@
 git add .
-git commit -m "make move"
+git commit -m "add bonus"
 git push origin master 

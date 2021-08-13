@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:46:42 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 19:03:29 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 20:30:35 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_c(char c, t_map *map, int col, int line)
 		map->check.exit += 1;
 	if (c == 'C')
 		map->check.collect += 1;
-	if (c == 'P' || c == '1' || c == 'C' || c == 'E' || c == '0')
+	if (c == 'P' || c == '1' || c == 'C' || c == 'E' || c == '0' || c == 'V')
 		return (1);
 	else
 		return (0);

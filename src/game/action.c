@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 16:55:09 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 19:46:16 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/12 20:38:05 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	close_win(t_game *game)
 
 int	verify_move(t_game *game, int line, int col, int key)
 {
-
 //	printf("what is the house %c\n", game->map.map[line][col]);
 	if (game->map.map[line][col] == '1')
 		return (-1);
@@ -49,6 +48,11 @@ int	verify_move(t_game *game, int line, int col, int key)
 		return (-1);
 	if (game->end_game)
 		return (-1);
+	if (game->map.map[line][col] == 'V')
+	{
+		reset(game);
+		return (-1);
+	}	
 	if (key != TOP && key != DOWN && key != LEFT && key != RIGHT )
 		return (-1);
 	else

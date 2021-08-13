@@ -1,33 +1,58 @@
 
 PATH_SRC = ./src/
-PATH_GNL = $(PATH_SRC)get_next_line/
+PATH_GNL = $(PATH_SRC)gnl/
 PATH_MAP = $(PATH_SRC)map/
 PATH_UTILS = $(PATH_SRC)utils/
 PATH_ERRORS = $(PATH_SRC)errors/
 PATH_GAME = $(PATH_SRC)game/
+PATH_MLX = ./minilibx/
+PATH_OBJS = ./objs/
 
-
+MLX = $(PATH_MLX)libmlx.a
 NAME = so_long
 
-FILES = $(PATH_GNL)get_next_line.c $(PATH_GNL)get_next_line_utils.c \
-		$(PATH_MAP)map.c $(PATH_MAP)check.c $(PATH_MAP)valid_maps.c $(PATH_MAP)render_map.c $(PATH_MAP)init_sprites.c\
-		$(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_memset.c $(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_strlen.c $(PATH_UTILS)check_extension.c\
+FILES = $(PATH_MAP)map.c $(PATH_MAP)check.c $(PATH_MAP)valid_maps.c \
+		$(PATH_MAP)render_map.c $(PATH_MAP)init_sprites.c \
+		$(PATH_GNL)get_next_line.c $(PATH_GNL)get_next_line_utils.c \
+		$(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_memset.c $(PATH_UTILS)ft_split.c \
+		$(PATH_UTILS)ft_strlen.c $(PATH_UTILS)check_extension.c $(PATH_UTILS)ft_itoa.c\
 		$(PATH_ERRORS)errors.c \
 		$(PATH_GAME)start.c $(PATH_GAME)action.c
 
+OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(FILES))
+
 CC = clang
-CFLAGS = -I ./minilibx/ -L ./minilibx/ -lmlx -Ilmlx -lXext -lX11 
+CFLAGS = -Wextra -Werror -Wall
+MLXFLAGS = -I $(PATH_MLX) -L $(PATH_MLX) -lmlx -Ilmlx -lXext -lX11
 RM = rm -rf
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	make -C $(PATH_MLX)
+	$(CC) -fsanitize=leak $(CFLAGS) $(MLXFLAGS) $(PATH_SRC)so_long.c $(OBJS) $(MLX) -o so_long
+
+$(PATH_OBJS)%.o:	$(PATH_SRC)%.c
+	@mkdir -p $(PATH_OBJS)
+	@mkdir -p $(PATH_OBJS)map
+	@mkdir -p $(PATH_OBJS)gnl
+	@mkdir -p $(PATH_OBJS)utils
+	@mkdir -p $(PATH_OBJS)errors
+	@mkdir -p $(PATH_OBJS)game
+	$(CC) -I. -c $< -o $@
 
 clean:
-	$(RM) $(OBJS_PATH)
+	$(RM) $(PATH_OBJS)
+	@echo obj removed!
 
 fclean: clean
+	make clean -C $(PATH_MLX)
 	$(RM) $(NAME)
+	@echo clean everything
+
+re: fclean all
+
+.PHONY: re all fclean clean
 
 test:	
-	$(CC) -fsanitize=leak $(CFLAGS) $(PATH_SRC)so_long.c $(FILES) ./minilibx/libmlx.a -o so_long
+	$(CC) -fsanitize=leak $(MLXFLAGS) $(CFLAGS) $(PATH_SRC)so_long.c $(FILES) ./minilibx/libmlx.a -o so_long
