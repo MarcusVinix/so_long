@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:54:49 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 09:16:30 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:07:33 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ void	init_wall(t_img *img, void *mlx)
 			&img->wall.size.y);
 	img->wall.pixel = mlx_get_data_addr(img->wall.img, &img->wall.bpp,
 			&img->wall.line_size, &img->wall.endian);
-}
-
-void	init_empty(t_img *img, void *mlx)
-{
 	img->emp.img = mlx_xpm_file_to_image(mlx, PATH_E, &img->emp.size.x,
 			&img->emp.size.y);
 	img->emp.pixel = mlx_get_data_addr(img->emp.img, &img->emp.bpp,

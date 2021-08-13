@@ -127,7 +127,6 @@ void	*backup(t_map *map, char **map_str);
 
 //init sprites
 void	init_wall(t_img *img, void *mlx);
-void	init_empty(t_img *img, void *mlx);
 void	init_exit(t_img *img, void *mlx);
 void	init_item(t_img *img, void *mlx);
 void	init_player(t_img *img, void *mlx);

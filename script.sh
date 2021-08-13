@@ -1,3 +1,3 @@
 git add .
-git commit -m "improve the render_map"
+git commit -m "fixing norm in the map folder"
 git push origin master 
