@@ -17,7 +17,7 @@ FILES = $(PATH_MAP)map.c $(PATH_MAP)check.c $(PATH_MAP)valid_maps.c \
 		$(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_memset.c $(PATH_UTILS)ft_split.c \
 		$(PATH_UTILS)ft_strlen.c $(PATH_UTILS)check_extension.c $(PATH_UTILS)ft_itoa.c\
 		$(PATH_ERRORS)errors.c \
-		$(PATH_GAME)start.c $(PATH_GAME)action.c
+		$(PATH_GAME)start.c $(PATH_GAME)action.c $(PATH_GAME)move.c
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(FILES))
 

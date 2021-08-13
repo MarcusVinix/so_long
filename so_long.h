@@ -142,6 +142,10 @@ int		init_game(t_game *game, int argc, char **argv);
 int		action(int key, t_game *game);
 int		update(t_game *game);
 int		close_win(t_game *game);
-
+void	check_side(t_game *game, int key);
+void	move_player(t_game *game, int line, int col, int key);
+int		verify_move(t_game *game, int line, int col, int key);
+void	reset(t_game *game);
+void	kill_player(t_game *game);
 
 #endif
