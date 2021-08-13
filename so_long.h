@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 10:54:13 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 13:43:57 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:42:54 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 # define SO_LONG_H
 
-# define TILES 50
-# define PATH_W "./sprite_file/wall.xpm"
-# define PATH_E "./sprite_file/empty.xpm"
-# define PATH_EX "./sprite_file/exit.xpm"
-# define PATH_PD "./sprite_file/player_down.xpm"
-# define PATH_PT "./sprite_file/player_top.xpm"
-# define PATH_PR "./sprite_file/player_right.xpm"
-# define PATH_PL "./sprite_file/player_left.xpm"
-# define PATH_I "./sprite_file/item.xpm"
-# define PATH_V "./sprite_file/venom.xpm"
-# define TOP 119
-# define DOWN 115
-# define LEFT 97
-# define RIGHT 100
+# define TILES 40
+# define PATH_W "./sprite_file/wall4.xpm"
+# define PATH_E "./sprite_file/empty4.xpm"
+# define PATH_EX "./sprite_file/exit4.xpm"
+# define PATH_PD "./sprite_file/player_down4.xpm"
+# define PATH_PT "./sprite_file/player_top4.xpm"
+# define PATH_PR "./sprite_file/player_right4.xpm"
+# define PATH_PL "./sprite_file/player_left4.xpm"
+# define PATH_I "./sprite_file/item4.xpm"
+# define PATH_V "./sprite_file/venom4.xpm"
+# define TOP 0x77
+# define DOWN 0x73
+# define LEFT 0x61
+# define RIGHT 0x64
+# define ESC 0xff1b
+# define RESET 0x72
 
 # include "./minilibx/mlx.h"
 # include <unistd.h>

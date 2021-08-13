@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 16:55:09 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 14:05:06 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:45:22 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	action(int keycode, t_game *game)
 
 	line = game->map.player.y;
 	col = game->map.player.x;
-	if (keycode == 65307)
+	if (keycode == ESC)
 		close_win(game);
-	if (keycode == 114)
+	if (keycode == RESET)
 		reset(game);
 	if (keycode == TOP)
 		line--;
@@ -66,7 +66,7 @@ int	action(int keycode, t_game *game)
 
 int	update(t_game *game)
 {
-	if (game->reset < 32)
+	if (game->reset < 30)
 		game->reset += 0.1;
 	else if (game->end_game < 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 16:04:18 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 13:19:11 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:06:38 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 /*  message error for functions with return int */
 int	errors(char *message)
 {
-	printf("\033[0;31m" " Error\n    %s\n" "\033[0m", message);
+	printf("\033[31;1;4m" " Error\n    %s\n" "\033[0m", message);
 	return (0);
 }
 
 /* message error for functions that return null for error */
 void	*null_erro(char *message)
 {
-	printf("\033[0;31m" " Error\n    %s\n" "\033[0m", message);
+	printf("\033[31;1;4m" " Error\n    %s\n" "\033[0m", message);
 	return (0);
 }
 

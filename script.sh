@@ -1,3 +1,3 @@
 git add .
-git commit -m "fixing minilibx"
+git commit -m "change the sprites pixels"
 git push origin master 

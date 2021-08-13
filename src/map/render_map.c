@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:40:43 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 12:39:43 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:14:10 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,12 @@ void	print_map(t_game *game)
 		}
 		line++;
 		str = ft_itoa(game->steps);
-		mlx_string_put(game->mlx, game->win, 25, 25, 0xFF0000,
+		mlx_string_put(game->mlx, game->win, 25, 25, 0xFFFF00,
 			"CURRENT STEP:");
-		mlx_string_put(game->mlx, game->win, 125, 25, 0xFF0000, str);
+		mlx_string_put(game->mlx, game->win, 120, 25, 0xFFFF00, str);
 		free(str);
+		if (game->end_game)
+			mlx_string_put(game->mlx, game->win, 150, 25, 0xFFFF00,
+				"YOU WIN PRESS R TO PLAY AGAIN!!");
 	}
 }
