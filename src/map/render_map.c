@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:40:43 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 09:35:51 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 09:38:39 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	print_player(t_game *game, int line, int col)
 		print_player_left(game, line, col);
 }
 
-static void	print_sprites_cex(t_game *game, int line, int col)
+static void	print_sprites_cex(t_game *game, int line, int col, int x, int y)
 {
 	if (game->map.map[line][col] == 'E')
 	{
@@ -98,13 +98,8 @@ static void	print_sprites_cex(t_game *game, int line, int col)
 	}
 }
 
-static void	print_sprites_wpe(t_game *game, int line, int col)
+static void	print_sprites_wpe(t_game *game, int line, int col, int x, int y)
 {
-	int	x;
-	int	y;
-
-	x = col * TILES;
-	y =	line * TILES;
 	if (game->map.map[line][col] == '1')
 	{
 		//game->img.wall.pos.x = col * TILES;
@@ -130,15 +125,19 @@ void	print_map(t_game *game)
 	int		line;
 	int		col;
 	char	*str;
+	int	x;
+	int	y;
 
+	x = col * TILES;
+	y =	line * TILES;
 	line = 0;
 	while (line < game->map.line)
 	{
 		col = 0;
 		while (col < game->map.colum)
 		{
-			print_sprites_cex(game, line, col);
-			print_sprites_wpe(game, line, col);
+			print_sprites_cex(game, line, col, x, y);
+			print_sprites_wpe(game, line, col, x, y);
 			col++;
 		}
 		line++;
