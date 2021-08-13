@@ -1,4 +1,3 @@
-
 PATH_SRC = ./src/
 PATH_GNL = $(PATH_SRC)gnl/
 PATH_MAP = $(PATH_SRC)map/

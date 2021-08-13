@@ -1,3 +1,3 @@
 git add .
-git commit -m "fixing norm in the src folder"
+git commit -m "fixing minilibx"
 git push origin master 
