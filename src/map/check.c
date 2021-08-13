@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:46:42 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 20:30:35 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 09:23:42 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	verify(int valid, t_map *map)
 {
 	if (map->valid == 1)
 		map->valid = valid;
-	//printf("validddd is %i\n", map->valid);
 }
 
 int	check_wall(char c)
@@ -36,8 +35,7 @@ int	check_c(char c, t_map *map, int col, int line)
 		map->player.x = col;
 		map->player.y = line - 1;
 		map->player_bup.x = col;
-		map->player_bup.y = line -1;
-		//printf("PLAYER X: %i Y: %i\n", col, line);
+		map->player_bup.y = line - 1;
 	}
 	if (c == 'E')
 		map->check.exit += 1;
@@ -49,7 +47,7 @@ int	check_c(char c, t_map *map, int col, int line)
 		return (0);
 }
 
-int valid_cpe(t_map *map)
+int	valid_cpe(t_map *map)
 {
 	if (map->check.collect < 1)
 		return (errors("the map need at least 1 collect item"));

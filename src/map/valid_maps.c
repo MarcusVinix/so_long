@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 23:38:37 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/12 21:44:20 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/13 09:25:32 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	valid_map(int argc, char *map_file)
 		return (errors("don't have argv"));
 	if (argc > 2)
 		warning("Just the first argv will be used");
-	//todo 
-	//some function to verify the extension of the map
 	if (check_extension(map_file, ".ber") <= 0)
 		return (errors("Wrong extension of the map"));
 	return (1);
@@ -29,14 +27,14 @@ int	valid_map(int argc, char *map_file)
 void	free_map(char **map_str, t_map *map)
 {
 	int	i;
-	//printf("ENTREI FREE");
+
 	i = 0;
 	while (i <= map->line)
-			free(map_str[i++]);
+		free(map_str[i++]);
 	free(map_str);
 	i = 0;
 	while (i <= map->line)
-			free(map->backup_map[i++]);
+		free(map->backup_map[i++]);
 	free(map->backup_map);
 }
 
@@ -65,13 +63,12 @@ int	recovery(t_map *map)
 	int		i;
 	int		line;
 
-	//printf("ENTREI FREE");
 	i = 0;
 	while (i <= map->line)
-			free(map->map[i++]);
+		free(map->map[i++]);
 	free(map->map);
 	line = map->line;
-	map->map  = malloc(sizeof(char *) * line + 1);
+	map->map = malloc(sizeof(char *) * line + 1);
 	if (!map->map)
 		return (0);
 	i = 0;
