@@ -15,15 +15,15 @@ To play this game you can use any map of your choice as long follow the followin
 * The extension need be `.ber`
 * Its must be rectangular, surrounded by wall `1`
 * Must have only one exit, only one player and at least one collectible
-* Characters allowed:  
-| Character   | Object                   |
-| :---------: | :---------:				 |
-| `1`         | wall					 |
-| `0`         | Empty					 |
-| `C`         | collectible				 |
-| `E`         | exit 					 |
-| `P`         | Player starting position |
-| `V`         | Enemy starting position	 |
+* Characters allowed:
+|  Character  |          Object          |
+|:-----------:|:------------------------:|
+|     *1*     | wall                     |
+|     *0*     | Empty                    |
+|     *C*     | collectible              |
+|     *E*     | exit                     |
+|     *P*     | Player starting position |
+|     *V*     | Enemy starting position  |
 
 
 
