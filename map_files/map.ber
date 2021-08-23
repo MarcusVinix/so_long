@@ -5,3 +5,15 @@
 1C0000000000001
 1C00V00000C0001
 111111111111111
+char **map;
+
+map = malloc(sizeof(char *) * count_line + 1);
+
+
+
+while(gnl(fd, map[i++]));
+
+
+
+map[]
+\0;
