@@ -16,6 +16,7 @@ To play this game you can use any map of your choice as long follow the followin
 * Its must be rectangular, surrounded by wall `1`
 * Must have only one exit, only one player and at least one collectible
 * Characters allowed:
+
 |  Character  |          Object          |
 |:-----------:|:------------------------:|
 |     *1*     | wall                     |
