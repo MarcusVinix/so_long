@@ -6,13 +6,13 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 23:38:37 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 09:25:32 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/24 09:54:45 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-/* this funtion will verify the argc and the map extension */
+/* this function will verify the argc and the map extension */
 int	valid_map(int argc, char *map_file)
 {
 	if (argc == 1)
@@ -24,6 +24,7 @@ int	valid_map(int argc, char *map_file)
 	return (1);
 }
 
+/* This function free the allocated memory of map and backup map */
 void	free_map(char **map_str, t_map *map)
 {
 	int	i;
@@ -38,6 +39,7 @@ void	free_map(char **map_str, t_map *map)
 	free(map->backup_map);
 }
 
+/* This function make a backup map and the amount collectible items */
 int	backup_map(t_map *map, char **map_str)
 {
 	int		i;
@@ -58,6 +60,7 @@ int	backup_map(t_map *map, char **map_str)
 	return (1);
 }
 
+/* Function to restart the map of the begin */
 int	recovery(t_map *map)
 {
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:56:21 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 13:04:53 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/24 09:31:20 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 /* Return how many line are in the map */
 /* and save how many colums has the mape in o_map->colum */
+/* This function use verify function witch use check function */
+/* Theses auxiliaries functions are in check.c file. */
 int	counts(int fd, int count_lines, int count_col, t_map *o_map)
 {
 	int		size;
@@ -43,6 +45,7 @@ int	counts(int fd, int count_lines, int count_col, t_map *o_map)
 }
 
 /* Return How many lines has the map */
+/* This function use count function above. */
 int	lines(char *map, t_map *o_map)
 {
 	int		fd;
@@ -77,6 +80,8 @@ static char	**alloc_map(char *path, t_map *o_map)
 	return (map_str);
 }
 
+/* This function check if the last line of the map is valid. */
+/* The valid_cpe function used in this one are in check.c file */
 static void	check_last_line(char *line, t_map *map)
 {
 	int	i;
@@ -99,6 +104,8 @@ static void	check_last_line(char *line, t_map *map)
 }
 
 /* fill the array with the map 2d */
+/* This function make a backup map for when a restart is requited */
+/* The backup_map function  is in valid_maps.c file */
 char	**read_map(char *path, t_map *o_map)
 {
 	int		fd;

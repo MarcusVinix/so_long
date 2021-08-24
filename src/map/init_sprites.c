@@ -6,12 +6,13 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:54:49 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 10:07:33 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/24 09:56:35 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+/* Init the image of wall */
 void	init_wall(t_img *img, void *mlx)
 {
 	img->wall.img = mlx_xpm_file_to_image(mlx, PATH_W, &img->wall.size.x,
@@ -24,6 +25,7 @@ void	init_wall(t_img *img, void *mlx)
 			&img->emp.line_size, &img->emp.endian);
 }
 
+/* Init the image of collectable item */
 void	init_item(t_img *img, void *mlx)
 {
 	img->item.img = mlx_xpm_file_to_image(mlx, PATH_I, &img->item.size.x,
@@ -32,6 +34,7 @@ void	init_item(t_img *img, void *mlx)
 			&img->item.line_size, &img->item.endian);
 }
 
+/* Init the image of exit */
 void	init_exit(t_img *img, void *mlx)
 {
 	img->exit.img = mlx_xpm_file_to_image(mlx, PATH_EX, &img->exit.size.x,
@@ -40,6 +43,7 @@ void	init_exit(t_img *img, void *mlx)
 			&img->exit.line_size, &img->exit.endian);
 }
 
+/* Init the image of enemy */
 void	init_enemy(t_img *img, void *mlx)
 {
 	img->enemy.img = mlx_xpm_file_to_image(mlx, PATH_V, &img->enemy.size.x,
@@ -48,6 +52,7 @@ void	init_enemy(t_img *img, void *mlx)
 			&img->enemy.line_size, &img->enemy.endian);
 }
 
+/* Init all images of the player */
 void	init_player(t_img *img, void *mlx)
 {
 	img->player.down.img = mlx_xpm_file_to_image(mlx, PATH_PD,

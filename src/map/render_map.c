@@ -6,12 +6,13 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:40:43 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 17:57:36 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/24 10:12:34 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+/* Call auxiliary functions to init all images */
 t_img	init_image(void *mlx)
 {
 	t_img	img;
@@ -24,6 +25,7 @@ t_img	init_image(void *mlx)
 	return (img);
 }
 
+/* Draws player images according to past side */
 void	print_player(t_game *game, t_pos pos)
 {
 	if (game->side == DOWN)
@@ -40,6 +42,7 @@ void	print_player(t_game *game, t_pos pos)
 			game->img.player.left.img, pos.x, pos.y);
 }
 
+/* Draws the sprites of exit, collectable and enemy */
 static void	print_sprites_cex(t_game *game, int line, int col)
 {
 	int	x;
@@ -64,6 +67,7 @@ static void	print_sprites_cex(t_game *game, int line, int col)
 	}
 }
 
+/* Draws the sprites of wall, empty and call the function to print player */
 static void	print_sprites_wpe(t_game *game, int line, int col)
 {
 	int		x;
@@ -90,6 +94,9 @@ static void	print_sprites_wpe(t_game *game, int line, int col)
 	}
 }
 
+/* This function render all map with auxiliary functions */
+/* Also print the current step on screen */
+/* And a victory message */
 void	print_map(t_game *game)
 {
 	int		line;

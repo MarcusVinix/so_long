@@ -65,5 +65,5 @@ norminha:
 
 git:
 	git add .
-	git commit -m "update README.md"
+	git commit -m "add comments to map files"
 	git push origin master 
