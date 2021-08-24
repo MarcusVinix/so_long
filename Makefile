@@ -65,5 +65,5 @@ norminha:
 
 git:
 	git add .
-	git commit -m "add comments on files inside game folder"
+	git commit -m "changing the images size"
 	git push origin master 
