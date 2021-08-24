@@ -6,12 +6,13 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 09:50:02 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 10:10:10 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/24 10:29:14 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+/* Check if the map has the right extension */
 int	check_extension(char *str, char *extension)
 {
 	int	len_str;

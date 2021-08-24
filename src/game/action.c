@@ -6,12 +6,13 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 16:55:09 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 17:45:22 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/24 11:10:22 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+/* Recovery the map and some variables for the original state of game */
 void	reset(t_game *game)
 {
 	recovery(&game->map);
@@ -22,12 +23,14 @@ void	reset(t_game *game)
 	game->side = DOWN;
 }
 
+/* Free the allocated memory of the map and close the window */
 int	close_win(t_game *game)
 {
 	free_map(game->map.map, &game->map);
 	exit(0);
 }
 
+/* This function kill the player and reset the map */
 void	kill_player(t_game *game)
 {
 	int	y;
@@ -40,6 +43,8 @@ void	kill_player(t_game *game)
 	print_map(game);
 }
 
+/* Handle the events of the game and call a auxiliary function */
+/* to make an action */
 int	action(int keycode, t_game *game)
 {
 	int	line;
@@ -64,6 +69,7 @@ int	action(int keycode, t_game *game)
 	return (1);
 }
 
+/* Draws the map and clear the window when the counter reset is 30 */
 int	update(t_game *game)
 {
 	if (game->reset < 30)

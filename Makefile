@@ -61,9 +61,9 @@ test:
 	$(CC) -fsanitize=leak $(MLXFLAGS) $(CFLAGS) $(PATH_SRC)so_long.c $(FILES) ./minilibx/libmlx.a -o so_long
 
 norminha:
-	@norminette so_long.h ./src
+	norminette so_long.h ./src
 
 git:
 	git add .
-	git commit -m "add comments to map files"
+	git commit -m "add comments on files inside game folder"
 	git push origin master 

@@ -6,12 +6,13 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 00:34:55 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 14:04:23 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/24 10:33:15 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+/* start the struct of map */
 void	start_map(t_map *map)
 {
 	map->colum = 0;
@@ -24,6 +25,7 @@ void	start_map(t_map *map)
 	map->item_bup = 0;
 }
 
+/* Init the map if is valid and store in a char **map */
 char	**init_map(t_game *game, int argc, char **argv)
 {
 	char	**map;
@@ -36,6 +38,7 @@ char	**init_map(t_game *game, int argc, char **argv)
 	return (map);
 }
 
+/* Init the window of game */
 void	init_window(t_game *game)
 {
 	game->mlx = mlx_init();
@@ -43,6 +46,7 @@ void	init_window(t_game *game)
 			game->map.line * TILES, "so_long");
 }
 
+/* Init the game starting the window and the map */
 int	init_game(t_game *game, int argc, char **argv)
 {
 	t_map	map;

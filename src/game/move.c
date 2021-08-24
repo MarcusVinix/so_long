@@ -6,12 +6,13 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 10:43:47 by mavinici          #+#    #+#             */
-/*   Updated: 2021/08/13 14:08:38 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/08/24 11:08:22 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+/* Check which side the player will and store in side variable */
 void	check_side(t_game *game, int key)
 {
 	if (key == DOWN)
@@ -24,6 +25,10 @@ void	check_side(t_game *game, int key)
 		game->side = LEFT;
 }
 
+/* This function call auxiliary functions to check if its possible move */
+/* If its possible to move, so where the player was */
+/* will be fill with empty space */
+/* and the player will to received position, also steps will be incremented. */
 void	move_player(t_game *game, int line, int col, int key)
 {
 	int	y;
@@ -48,6 +53,14 @@ void	move_player(t_game *game, int line, int col, int key)
 	}
 }
 
+/* Check if its possible to move the player */
+/* If its a wall the return will be -1 */
+/* If its the exit and the collectable its different of 0  will return -1 */
+/* If  its exit and the collectable its equal 0 */
+/* so the variable end_game will receive 1(true) */
+/* and will return -1, if its a enemy will return -1 */
+/* and the game will be restarted */
+/* Will be returned -1 if the key its diferrent of AWSD */
 int	verify_move(t_game *game, int line, int col, int key)
 {
 	if (game->map.map[line][col] == '1')
