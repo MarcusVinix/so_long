@@ -2,9 +2,11 @@
 
 ![](https://img.shields.io/badge/Language-C-blue)
 ![](https://img.shields.io/badge/School-42-black)
+<center>
 
 ![map](map_files/map.ber.png)
 
+</center>
 ## Description  
  This project is a very small 2D game. It is built to make you work with
 textures, sprites. And some very basic gameplay elements.

@@ -65,5 +65,5 @@ norminha:
 
 git:
 	git add .
-	git commit -m "changing the images size"
+	git commit -m "center image readme"
 	git push origin master 
